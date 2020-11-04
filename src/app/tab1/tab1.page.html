@@ -1,0 +1,73 @@
+<ion-header [translucent]="true">
+    <ion-toolbar mode="ios">
+        <!--mode=ios is formatting lifesaver!!-->
+        <img alt="logo" class="align-left" height="40" src="/assets/icon/cn-icon.png">
+        <ion-title class="ion-text-center title-font align-title">
+            <div>Contractions Now!</div>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+ 
+<ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title class="row center">Home</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <!-- DIGITAL TIMER READOUT -->
+    <div class="stopwatch-display">
+        <h1 style="text-align: center" class="color-white font-lg" [ngStyle]="{'color': timerColor}">
+            {{time}}
+        </h1>
+    </div>
+
+    <ion-content>
+
+        <!-- RESET BUTTON -->
+        <div  class="align-right tab">
+            
+                <ion-button color="danger" size="small" (click)='presentAlert()'>RESET</ion-button>
+            
+        </div>
+
+        <!-- START/STOP BUTTON -->
+        <ion-fab class="fab-size" vertical="top" horizontal="center" slot="fixed">
+            <ion-fab-button class="fab-size" size="large" (click)='start()' (click)='lapType()' (click)='changeText()' (click)='lapTime()' (click)='timerColorCycle()'> {{textGO}} </ion-fab-button>
+        </ion-fab>
+
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <!-- RESULTS LIST -->
+        <ion-row>
+            <ion-col width-50>
+                <h1>
+                    <ion-list [ngClass]="(i % 2 == 0) ? 'odd' : 'even'" *ngFor="let term of laps | slice:1; let i = index">
+                       
+                        <!--DURATION-->
+                        <div style="line-height:200%; text-align: right;" class="align-right list-timer">
+                           {{ term }}
+                        </div>
+
+                        <!--CONTRACTION OR INTERVAL TEXT-->
+                        <span class="small-font" style="text-align: right">
+                            {{ textType[i+1] }}
+                        </span>
+
+                        <br />
+                        <!--TIME STAMP-->
+                        <span class="small-font align-left">
+                           DATE: {{ timeLog[i] }}
+                        </span>
+
+                    </ion-list>
+                </h1>
+            </ion-col>
+        </ion-row>
+
+    </ion-content>
+</ion-content>
+

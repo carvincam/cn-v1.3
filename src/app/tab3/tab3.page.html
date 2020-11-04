@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+    <ion-toolbar mode="ios">
+        <!--mode=ios is formatting lifesaver!!-->
+        <img alt="logo" class="align-left" height="40" src="/assets/icon/cn-icon.png">
+        <ion-title class="ion-text-center title-font align-title">
+            <div>Contractions Now!</div>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+    <!--COLOR THEME SWITCHER-->
+<ion-content [fullscreen]="true">
+    <ion-card>
+        <ion-title style="text-align: center" class="tab">COLOR THEME</ion-title>
+        <ion-list style="text-align: center">
+            <ion-chip>
+                <ion-label (click)='switchThemeDefault()'>DEFAULT</ion-label>
+            </ion-chip>
+
+            <ion-chip>
+                <ion-label (click)='switchThemeNeutral()'>NEUTRAL</ion-label>
+            </ion-chip>
+
+            <ion-chip>
+                <ion-label (click)='switchThemeDark()'>DARK</ion-label>
+            </ion-chip>
+        </ion-list>
+    </ion-card>
+
+    
+    <ion-card>
+        <ion-list style="text-align: center">
+            <!--SEARCH BAR-->
+            <ion-searchbar searchIcon="compass" showCancelButton="never" placeholder="Enter your hospital..." [(ngModel)]="name" id="input" class="align-left">
+            </ion-searchbar>
+            <!--LAUNCH NAV BUTTON-->
+            <ion-chip>
+                <ion-title (click)='storeDestination()' (click)='presentActionSheet()' style="text-align: center" class="tab align navi sansserif">NAVIGATE</ion-title>
+            </ion-chip>
+        </ion-list>
+        
+            
+        
+    </ion-card>
+        
+
+   
+
+
+</ion-content>
